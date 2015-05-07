@@ -1,0 +1,25 @@
+<h1><%= @event.name %></h1>
+<p>Host: <%= @event.user.first_name %> <%= @event.user.last_name %></p>
+<p>Date: <%= @event.start_date.strftime("%B %d %Y") %></p>
+<p>Location: <%= @event.city %>, <%= @event.state %></p>
+<p>People who are joining the event <%= @event.memberships.count %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event.memberships.each do |member| %>
+      <tr>
+        <td><%= member.user.first_name %></td>
+        <td><%= member.user.city %></td>
+        <td><%= member.user.state %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
